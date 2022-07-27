@@ -1,8 +1,9 @@
 import express from "express";
+import { getLists, createList} from '../controllers/lists.js'
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('THIS WORKS');
-});
+router.get('/', getLists);
+router.post('/', createList);
 
 export default router;
