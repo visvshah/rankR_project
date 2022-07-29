@@ -8,6 +8,13 @@ export const getLists = async (request, response) => {
         response.status(404).json({message: error.message})
     }
 }
-export const createList = (request, response) => {
-    response.send('Post Created');
+export const createList = async (request, response) => {
+    const list = request.body;
+    const newList = new ListContent(list);
+    try {
+        await newList.save();
+        response.status(201).json(newList);
+    } catch (error) {
+        response.statis(409).json({message: error.message})
+    }
 }
