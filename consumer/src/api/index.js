@@ -1,5 +1,5 @@
-import axious from 'axious';
+import axios from 'axios';
 
 const url = "http://localhost:5000/lists";
 
-export const getPost = () => axious.get(url);
+export const fetchLists = () => axios.get(url);
