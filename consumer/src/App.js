@@ -2,14 +2,14 @@ import React, {useEffect} from 'react'
 import "./app.scss"
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core'
 import { useDispatch } from 'react-redux'
-import {getPosts} from './actions/lists.js'
+import {getLists} from './actions/lists.js'
 import RankRLogo from "./images/RankRLogo.png"
 import Lists from "./components/Lists/lists.js"
 import Form from "./components/Forms/forms.js"
 export default function App() {
   const dispatch = useDispatch();
-  useEffect(()=> {
-    dispatch(getPosts());
+  useEffect(() => {
+    dispatch(getLists());
   },[dispatch])
   return (
       <Container className = "app" maxwidth="lg">
