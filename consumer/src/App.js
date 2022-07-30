@@ -11,6 +11,7 @@ export default function App() {
   useEffect(() => {
     dispatch(getLists());
   },[dispatch])
+  
   return (
       <Container className = "app" maxwidth="lg">
         <AppBar className ="navBar" position='static' color='inherit'>
