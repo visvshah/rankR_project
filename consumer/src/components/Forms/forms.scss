@@ -1,19 +1,16 @@
-.root{
+.paper{
+    padding: 10px;
     &.MuiTextField-root{
-        margin: theme.spacing(1);
-    }
-
-    .paper{
-        padding: theme.spacing(2);
+        margin: 10px;
     }
     .form{
         display: 'flex';
         flex-wrap: wrap;
         justify-content: center;
-    }
-    .fileInput{
-        width: '97%';
-        margin: '10px 0';
+        
+        .input{
+            margin: 10px 0px;
+        }
     }
     .buttonSubmit{
         margin-bottom: 10;
