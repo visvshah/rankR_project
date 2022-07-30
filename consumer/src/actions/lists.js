@@ -8,3 +8,11 @@ export const getLists = () => async(dispatch) =>{
     }
     
 }
+export const createList = (list) => async (dispatch) =>{
+    try {
+        const {data} = await api.createList(list);
+        dispatch({type: 'CREATE', payload: data});
+    } catch (error) {
+        console.log(error.message);
+    }
+}

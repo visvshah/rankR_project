@@ -1,8 +1,7 @@
-import ListContent from '../models/listContent.js'
+import listContent from '../models/listContent.js'
 export const getLists = async (request, response) => {
     try {
-        const listContents = await ListContent.find();
-        console.log(listContents);
+        const listContents = await listContent.find();
         response.status(200).json(listContents);
     } catch (error) {
         response.status(404).json({message: error.message})
@@ -10,7 +9,7 @@ export const getLists = async (request, response) => {
 }
 export const createList = async (request, response) => {
     const list = request.body;
-    const newList = new ListContent(list);
+    const newList = new listContent(list);
     try {
         await newList.save();
         response.status(201).json(newList);
