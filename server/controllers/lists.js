@@ -1,4 +1,6 @@
-import listContent from '../models/listContent.js'
+import listContent from '../models/listContent.js';
+import mongoose from 'mongoose';
+
 export const getLists = async (request, response) => {
     try {
         const listContents = await listContent.find();
@@ -17,3 +19,9 @@ export const createList = async (request, response) => {
         response.statis(409).json({message: error.message})
     }
 }
+export const deleteList = async (request, response) => {
+    const {id}= request.params
+    if (!mongoose.Types.ObjectId.isValid(id)) return response.status(404).send(`No list with id: ${id}`);
+    await listContent.findByIdAndRemove(id);
+    response.json({ message: "List deleted!" });
+};

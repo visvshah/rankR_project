@@ -6,9 +6,12 @@ import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import DeleteIcon from '@material-ui/icons//Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { deleteList } from '../../../actions/lists';
 import "./list.scss"
 
 export default function list({list}){
+  const dispatch = useDispatch();
   return (
     <Card className = 'card'>
       <div className='listHeading'>
@@ -39,7 +42,7 @@ export default function list({list}){
           </Button>
           {list.thumbs}
         </div>
-        <Button size = "small" color="primary" onClick={() => {}}>
+        <Button size = "small" color="primary" onClick={() => dispatch(deleteList(list._id))}>
           <DeleteIcon/>
         </Button>
       </CardActions>
