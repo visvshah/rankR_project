@@ -1,47 +1,61 @@
-.media{
-    height: 0;
-    padding-top: 56%;
-    background-color: rgba(0, 0, 0, 0.5);
-    background-blend-mode: darken;
-    .border{
-        border: 'solid';
-    }
-    .fullHeightCard{
-        height: '100%';
-    }
-    .card{
-    display: 'flex';
+.card{
+    display: flex;
     justify-content: space-between;
     border-radius: 15px;
-    height: '100%';
-    position: 'relative';
+    height: 100%;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 10px 10px;
+    .listHeading{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .holder{
+            width: 100%;
+            align-items: center;
+            justify-content:space-evenly;
+            display: flex;
+            flex-direction: row;
+            .author{
+                display: flex;
+            }
+            .date{
+                display: flex;
+                color: gray;
+                font-size: 14px;  
+            }
+        }
     }
-    .overlay{
-        position: 'absolute';
-        top: '20px';
-        left: '20px';
-        color: 'white';
+    .listMiddle{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        color: black;
+        .optionsButton{
+            display: flex;
+        }
     }
-    .overlay2{
-        position: 'absolute';
-        top: '20px';
-        right: '20px';
-        color: 'white';
+    
+    .fullHeightCard{
+        height: 100%;
     }
+    
     .grid{
-        display: 'flex';
+        display: flex;
     }
+    
     .details{
-        display: 'flex';
+        display: flex;
         justify-content: space-between;
-        margin: '20px';
+        margin: 20px;
     }
     .title{
-        padding: '0 16px';
+        padding: 0 16px;
     }
-    .cardActions{
-        padding: '0 16px 8px 16px';
-        display: 'flex';
+    .listFooting{
+        padding: 0 16px 8px 16px;
+        display: flex;
         justify-content: space-between;
     }
 }

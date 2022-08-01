@@ -7,11 +7,11 @@ const postSchema = mongoose.Schema({
     tags: [String],
     thumbs: {
         type: Number,
-        default: 0
+        default: 0,
     },
     timeStamp: {
         type: Date,
-        default: new Date()
+        default: new Date(),
     }
 })
 
