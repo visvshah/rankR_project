@@ -7,6 +7,7 @@ import DeleteIcon from '@material-ui/icons//Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import "./list.scss"
+
 export default function list({list}){
   return (
     <Card className = 'card'>
@@ -22,7 +23,7 @@ export default function list({list}){
       </CardContent>
       <div className='listMiddle'>
         <Button className = 'optionsButton' size ="small" onClick={() => {}}>
-          <MoreHorizIcon fontSize='default'></MoreHorizIcon>
+          <MoreHorizIcon fontSize='medium'></MoreHorizIcon>
         </Button>
       </div>
       <div className='details'>
