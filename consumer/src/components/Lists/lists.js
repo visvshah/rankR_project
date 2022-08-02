@@ -3,21 +3,18 @@ import {Grid, CircularProgress} from "@material-ui/core"
 import {useSelector} from 'react-redux'
 import List from './List/list.js';
 import "./lists.scss"
-export default function Lists(){
+export default function Lists({changeId}){
   const lists = useSelector((state) => state.lists);
   console.log(lists);
-  if(lists.length < 1){
-    return <CircularProgress/>
-  }
-  else{
-    return (
+  return (
+    lists.length ===0 ? <CircularProgress/> : (
       <Grid className='mainContainer' container spacing={3}>
         {lists.map((list) =>(
           <Grid key = {list.id} item xs={12} sm={6}>
-            <List list = {list}/>
+            <List list = {list} changeId = {changeId}/>
           </Grid>
         ))}
       </Grid>
     )
-  } 
-}
+  )
+} 

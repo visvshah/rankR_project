@@ -25,3 +25,12 @@ export const deleteList = (id) => async (dispatch) =>{
         console.log(error);
     }
 }
+
+export const updateList = (id, list) => async (dispatch) =>{
+    try {
+        const {data} = await api.updateList(id, list);
+        dispatch({type: 'UPDATE', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}

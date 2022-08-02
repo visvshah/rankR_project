@@ -24,4 +24,19 @@ export const deleteList = async (request, response) => {
     if (!mongoose.Types.ObjectId.isValid(id)) return response.status(404).send(`No list with id: ${id}`);
     await listContent.findByIdAndRemove(id);
     response.json({ message: "List deleted!" });
+}
+
+export const updateList = async (request, response) => {
+    const {id: _id}= request.params;
+    const list = request.body;
+    if (!mongoose.Types.ObjectId.isValid(_id)) return response.status(404).send(`No list with id: ${_id}`);
+    const newList = await listContent.findByIdAndUpdate(_id, {...list, _id}, {new:true});
+    response.json(newList);
+};
+
+export const likeList = async (request, response) => {
+    const {id}= request.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) return response.status(404).send(`No list with id: ${id}`);
+    const list = await listContent.findById(id);
+    response.json(newList);
 };

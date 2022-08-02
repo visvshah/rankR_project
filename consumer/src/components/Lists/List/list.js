@@ -1,5 +1,5 @@
-import { formatMs } from '@material-ui/core'
-import React from 'react'
+
+import Reacts from 'react'
 import {Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { deleteList } from '../../../actions/lists';
 import "./list.scss"
 
-export default function list({list}){
+export default function list({list, changeId}){
   const dispatch = useDispatch();
   return (
     <Card className = 'card'>
@@ -25,7 +25,7 @@ export default function list({list}){
         <Typography className = "title" variant = 'body2' gutterBottom>{list.content.map((item, num) => `\n${num + 1}.) ${item}`)}</Typography>
       </CardContent>
       <div className='listMiddle'>
-        <Button className = 'optionsButton' size ="small" onClick={() => {}}>
+        <Button className = 'optionsButton' size ="small" onClick={() => changeId(list._id)}>
           <MoreHorizIcon fontSize='medium'></MoreHorizIcon>
         </Button>
       </div>

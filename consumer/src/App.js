@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import "./app.scss"
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core'
 import { useDispatch } from 'react-redux'
@@ -7,10 +7,11 @@ import RankRLogo from "./images/RankRLogo.png"
 import Lists from "./components/Lists/lists.js"
 import Form from "./components/Forms/forms.js"
 export default function App() {
+  const [currentId, changeId] = useState(0);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getLists());
-  },[dispatch])
+  },[currentId, dispatch])
   
   return (
       <Container className = "app" maxwidth="lg">
@@ -20,12 +21,12 @@ export default function App() {
         </AppBar>
         <Grow in>
           <Container className ="Content">
-            <Grid container justify = "space-between" alignItems = "stretch" spacing={3}>
+            <Grid container justifyContent = "space-between" alignItems = "stretch" spacing={3}>
               <Grid className="Posts" item xs={12} sm={7}>
-                <Lists/>
+                <Lists changeId = {changeId}/>
               </Grid>
               <Grid className="Form" item xs={12} sm={4}>
-                <Form/>
+                <Form currentId = {currentId} changeId = {changeId}/>
               </Grid>
             </Grid>
 

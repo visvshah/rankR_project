@@ -1,9 +1,11 @@
 import express from "express";
-import { getLists, createList, deleteList} from '../controllers/lists.js'
+import { getLists, createList, deleteList, updateList, likeList} from '../controllers/lists.js'
 
 const router = express.Router();
 
 router.get('/', getLists);
 router.post('/', createList);
 router.delete('/:id', deleteList);
+router.patch('/:id', updateList)
+router.patch('/:id/likes', likeList)
 export default router;
