@@ -22,7 +22,9 @@ export default function list({list, changeId}){
         </div>
       </div>
       <CardContent>
-        <Typography className = "title" variant = 'body2' gutterBottom>{list.content.map((item, num) => `\n${num + 1}.) ${item}`)}</Typography>
+        {list.content.map((item, num) => (
+          <Typography className = "title" variant = 'body2' gutterBottom>{`${num + 1}.) ${item}`}</Typography>
+        ))}
       </CardContent>
       <div className='listMiddle'>
         <Button className = 'optionsButton' size ="small" onClick={() => changeId(list._id)}>
