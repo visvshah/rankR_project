@@ -7,5 +7,5 @@ router.get('/', getLists);
 router.post('/', createList);
 router.delete('/:id', deleteList);
 router.patch('/:id', updateList)
-router.patch('/:id/likes', likeList)
+router.patch('/:id/thumbs', likeList)
 export default router;

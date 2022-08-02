@@ -7,7 +7,7 @@ import DeleteIcon from '@material-ui/icons//Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { deleteList } from '../../../actions/lists';
+import { deleteList, likeList} from '../../../actions/lists';
 import "./list.scss"
 
 export default function list({list, changeId}){
@@ -34,10 +34,10 @@ export default function list({list, changeId}){
       </div>
       <CardActions className="listFooting">
         <div className = 'thumbs'>
-          <Button size = "small" color="primary" onClick={() => {}}>
+          <Button size = "small" color="primary" onClick={() => dispatch(likeList(list._id))}>
             <ThumbUpAltIcon/>
           </Button>
-          <Button size = "small" color="primary" onClick={() => {}}>
+          <Button size = "small" color="primary" onClick={() => console.log(list._id)}>
             <ThumbDownAltIcon/>
           </Button>
           {list.thumbs}

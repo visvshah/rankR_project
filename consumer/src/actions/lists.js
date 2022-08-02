@@ -34,3 +34,12 @@ export const updateList = (id, list) => async (dispatch) =>{
         console.log(error);
     }
 }
+
+export const likeList = (id) => async (dispatch) =>{
+    try {
+        const {data} = await api.likeList(id);
+        dispatch({type: 'UPDATE', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}

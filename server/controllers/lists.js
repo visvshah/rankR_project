@@ -38,5 +38,7 @@ export const likeList = async (request, response) => {
     const {id}= request.params;
     if (!mongoose.Types.ObjectId.isValid(id)) return response.status(404).send(`No list with id: ${id}`);
     const list = await listContent.findById(id);
+    const newList = await listContent.findByIdAndUpdate(id, {thumbs: list.thumbs + 1}, {new:true});
     response.json(newList);
 };
+
