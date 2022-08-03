@@ -1,7 +1,7 @@
 import React from 'react'
 import {Grid, CircularProgress} from "@material-ui/core"
 import {useSelector} from 'react-redux'
-import List from './List/list.js';
+import List from './List/list.jsx';
 import "./lists.scss"
 export default function Lists({changeId}){
   const lists = useSelector((state) => state.lists);

@@ -1,0 +1,32 @@
+.navBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    .rankR{
+        display: flex;
+        flex-direction: row;
+        img{
+            height:80px;
+            width:80px;
+            margin-left: 30px;
+        }
+        .heading{
+            color: orange;
+        }
+        
+    }
+    .toolBar{
+        .profile{
+            .avatar{
+
+            }
+            .userName{
+
+            }
+            .logout{
+
+            }
+        }
+    }
+}

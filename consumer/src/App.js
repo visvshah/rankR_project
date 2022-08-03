@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import "./app.scss"
-import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core'
+import {Container, Grow, Grid} from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import {getLists} from './actions/lists.js'
 import RankRLogo from "./images/RankRLogo.png"
-import Lists from "./components/Lists/lists.js"
-import Form from "./components/Forms/forms.js"
+import Lists from "./components/Lists/lists.jsx"
+import Navbar from "./components/Navbar/navbar.jsx"
+import Form from "./components/Forms/forms.jsx"
 export default function App() {
   const [currentId, changeId] = useState(0);
   const dispatch = useDispatch();
@@ -15,10 +16,7 @@ export default function App() {
   
   return (
       <Container className = "app" maxwidth="lg">
-        <AppBar className ="navBar" position='static' color='inherit'>
-          <Typography className ="heading" variant='h2' align='center'>Your Lists</Typography>
-          <img src = {RankRLogo} alt = "RankR Logo"/>
-        </AppBar>
+        <Navbar/>
         <Grow in>
           <Container className ="Content">
             <Grid container justifyContent = "space-between" alignItems = "stretch" spacing={3}>
