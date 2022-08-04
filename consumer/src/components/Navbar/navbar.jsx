@@ -13,7 +13,19 @@ export default function Navbar() {
                 <img src = {RankRLogo} alt = "RankR Logo"/>
                 <h1 className="heading">Your Lists</h1>
             </div>
-            
+            <Toolbar className = "toolBar">
+                {user?(
+                    <div className="profile">
+                        <div className = "avatar">{user.result.name.charAr(0)}</div>
+                        <h4 className = "userName">{user.result.name}</h4>
+                        <Button className = "logout" variant = "contained" color = "secondary">Logout</Button>
+                    </div>
+                ):(
+                    <Button component = {Link} to="/login" variant = "contained" color="primary">Sign in</Button>
+                )
+
+                }
+            </Toolbar>
         </AppBar>
     )
 }
