@@ -1,20 +1,42 @@
-import React, {useState} from 'react'
-import {Container, Button, Paper, Grid, TextField} from '@material-ui/core'
+import React, {useState} from 'react';
+import {Container, Button, Paper, Grid, TextField} from '@material-ui/core';
 import "./auth.scss";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
-import Input from "./input.jsx"
+import { useDispatch } from 'react-redux';
+import {useHistory} from 'react-router-dom'
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Input from "./input.jsx";
+import {signin, signup} from "../../actions/auth.js"
 
 export default function auth() {
-    const signedUp = true;
     const [showPassword, changeShowPassword] = useState(false);
-    const handleSubmit = () =>{
-
+    const [signedUp, changeSignedUp] = useState(false);
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const [userData, setUserData] = useState({
+        firstName : "",
+        lastName : "",
+        email : "",
+        password : "",
+        confirmPassword : "",
+    });
+    const handleSubmit = (event) =>{
+        event.preventDefault();
+        console.log(userData);
+        if(signedUp){
+            dispatch(signup(userData, history))
+        }
+        else{
+            dispatch(signin(userData, history))
+        }
     }
-    const handleChange = () =>{
-
+    const handleChange = (event) =>{
+        setUserData({...userData, [event.target.name]:event.target.value})
     }
     const handleShowPassword = () =>{
         changeShowPassword(!showPassword);
+    }
+    const switchMode = ()=>{
+        changeSignedUp(!signedUp);
     }
     return (
         <Container component="main" maxWidth = "xs">
@@ -28,11 +50,8 @@ export default function auth() {
                     {
                         signedUp && (
                             <>
-                                <Grid xs = {6} md ={12}>
-
-                                </Grid>
-                                <Input name = "firstName" label = "First Name" handleChamge = {handleChange} autoFocus half/>
-                                <Input name = "lastName" label = "Last Name" handleChamge = {handleChange} half/>
+                                <Input name = "firstName" label = "First Name" handleChange = {handleChange} autoFocus half/>
+                                <Input name = "lastName" label = "Last Name" handleChange = {handleChange} half/>
                             </>
                         )
                     }
@@ -43,6 +62,13 @@ export default function auth() {
                 <Button type = "submit" fullWidth variant = "contained" color = "primary" className = "submit">
                     {signedUp ? "Sign Up" : "Sign In"}
                 </Button>
+                <Grid container justify = "flex-end">
+                    <Grid item>
+                        <Button onClick = {switchMode}>
+                            {signedUp ? "Sign In Instead" : "Sign Up Instead"}
+                        </Button>
+                    </Grid>
+                </Grid>
             </form>
             </Paper>
         </Container>
