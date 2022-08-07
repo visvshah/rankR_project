@@ -11,7 +11,7 @@ export const getLists = async (request, response) => {
 }
 export const createList = async (request, response) => {
     const list = request.body;
-    const newList = new listContent(list);
+    const newList = new listContent({...list, creator: request.userId, timeStamp: newData().toISOString()});
     try {
         await newList.save();
         response.status(201).json(newList);
@@ -36,9 +36,19 @@ export const updateList = async (request, response) => {
 
 export const likeList = async (request, response) => {
     const {id}= request.params;
+    if(!request.userId) return response.json({message: "Log in first!"});
+
     if (!mongoose.Types.ObjectId.isValid(id)) return response.status(404).send(`No list with id: ${id}`);
     const list = await listContent.findById(id);
-    const newList = await listContent.findByIdAndUpdate(id, {thumbs: list.thumbs + 1}, {new:true});
+
+    const like = list.thumbs.findIndex((id) => id === String(request.userId));
+    if(like === -1){
+        list.thumbs.push(request.userId);
+    }
+    else{
+        list.thumbs = post.likes.filter((id)=> id !== String(request.userId));
+    }
+    const newList = await listContent.findByIdAndUpdate(id, list, {new:true});
     response.json(newList);
 };
 

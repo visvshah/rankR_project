@@ -21,7 +21,6 @@ export default function auth() {
     });
     const handleSubmit = (event) =>{
         event.preventDefault();
-        console.log(userData);
         if(signedUp){
             dispatch(signup(userData, history))
         }

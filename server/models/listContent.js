@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 const postSchema = mongoose.Schema({
     title: String,
     content: [String],
+    name: String,
     author: String,
     tags: [String],
     thumbs: {
-        type: Number,
-        default: 0,
+        type: [String],
+        default: [],
     },
     timeStamp: {
         type: Date,

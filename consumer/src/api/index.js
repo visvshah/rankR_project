@@ -1,9 +1,18 @@
 import axios from 'axios';
 
-const url = "http://localhost:4000/lists";
+const API = axios.create({baseURL: "http://localhost:4000"});
 
-export const fetchLists = () => axios.get(url);
-export const createList = (newList) => axios.post(url, newList);
-export const deleteList = (id) => axios.delete(`${url}/${id}`);
-export const updateList = (id, newList) => axios.patch(`${url}/${id}`, newList);
-export const likeList = (id) => axios.patch(`${url}/${id}/thumbs`);
+API.interceptors.request.use((request) => {
+    if(localStorage.getItem("profile")){
+        request.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem("profile")).token}`;
+    }
+    return request;
+});
+
+export const fetchLists = () => API.get("/lists");
+export const createList = (newList) => API.post("/lists", newList);
+export const deleteList = (id) => API.delete(`/lists/${id}`);
+export const updateList = (id, newList) => API.patch(`/lists/${id}`, newList);
+export const likeList = (id) => API.patch(`/lists/${id}/thumbs`);
+export const signin = (userData) => API.post(`/user/signin`, userData);
+export const signup = (userData) => API.post(`/user/signup`, userData);
