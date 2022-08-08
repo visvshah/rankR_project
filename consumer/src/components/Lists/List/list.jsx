@@ -1,6 +1,6 @@
 
 import Reacts from 'react'
-import {Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
+import {Card, CardActions, CardContent, Button, Typography, ListSubheader} from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import DeleteIcon from '@material-ui/icons//Delete';
@@ -12,14 +12,19 @@ import "./list.scss"
 
 export default function list({list, changeId}){
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const alreadyLiked = list.thumbs.find((thumb) => thumb === user?.result._id);
+  const isCreator = user?.result._id === list.creator;
   return (
     <Card className = 'card'>
-      <Button className = 'optionsButton' size ="small" onClick={() => changeId(list._id)}><MoreHorizIcon fontSize='medium'></MoreHorizIcon></Button>
-
+      {isCreator ? (
+        <Button className = 'editButton' size ="small" onClick={() => changeId(list._id)}><MoreHorizIcon fontSize='medium'></MoreHorizIcon></Button>
+      ) : null
+      }
       <div className='listHeading'>
         <h1>{list.title}</h1>
         <div className = 'holder'>
-          <h3 className = 'author'>{list.author}</h3>
+          <h3 className = 'author'>{list.name}</h3>
           <p className= 'date'>{moment(list.timeStamp).fromNow()}</p>
         </div>
       </div>
@@ -36,17 +41,21 @@ export default function list({list, changeId}){
 
       <CardActions className="listFooting">
         <div className = 'thumbs'>
-          <Button size = "small" color="primary" onClick={() => dispatch(likeList(list._id))}>
-            <ThumbUpAltIcon/>
+          <Button size = "small" color="primary" disabled = {!user?.result} onClick={() => dispatch(likeList(list._id))}>
+            <ThumbUpAltIcon className = {`thumbsUp ${alreadyLiked ? "active" : ""}`}/>
           </Button>
-          <Button size = "small" color="primary" onClick={() => console.log(list._id)}>
-            <ThumbDownAltIcon/>
+          <Button size = "small" color="secondary" disabled = {!user?.result} onClick={() => console.log(list._id)}>
+            <ThumbDownAltIcon className={`thumbsDown ${alreadyLiked ? "active" : ""}`}/>
           </Button>
-          {list.thumbs}
+          {list.thumbs.length}
         </div>
-        <Button size = "small" color="primary" onClick={() => dispatch(deleteList(list._id))}>
-          <DeleteIcon/>
-        </Button>
+        {isCreator ? (
+          <Button size = "small" color="primary" disabled = {!user?.result} onClick={() => dispatch(deleteList(list._id))}>
+            <DeleteIcon/>
+          </Button>
+        ) : null
+        }
+        
       </CardActions>
 
     </Card>

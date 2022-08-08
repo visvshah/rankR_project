@@ -6,36 +6,35 @@ import {useHistory} from 'react-router-dom'
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Input from "./input.jsx";
 import {signin, signup} from "../../actions/auth.js"
+const emptyForm = {firstName : "", lastName : "", email : "", password : "", confirmPassword : ""}
 
 export default function auth() {
+    const [userData, setUserData] = useState(emptyForm);
     const [showPassword, changeShowPassword] = useState(false);
     const [signedUp, changeSignedUp] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    const [userData, setUserData] = useState({
-        firstName : "",
-        lastName : "",
-        email : "",
-        password : "",
-        confirmPassword : "",
-    });
+    
     const handleSubmit = (event) =>{
         event.preventDefault();
         if(signedUp){
-            dispatch(signup(userData, history))
+            console.log("1.) Auth/auth.jsx");
+            dispatch(signup(userData, history));
         }
         else{
-            dispatch(signin(userData, history))
+            dispatch(signin(userData, history));
         }
     }
     const handleChange = (event) =>{
-        setUserData({...userData, [event.target.name]:event.target.value})
+        setUserData({...userData, [event.target.name]:event.target.value});
     }
     const handleShowPassword = () =>{
         changeShowPassword(!showPassword);
     }
     const switchMode = ()=>{
         changeSignedUp(!signedUp);
+        setUserData(emptyForm);
+
     }
     return (
         <Container component="main" maxWidth = "xs">

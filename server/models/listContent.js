@@ -5,6 +5,7 @@ const postSchema = mongoose.Schema({
     content: [String],
     name: String,
     author: String,
+    creator: String,
     tags: [String],
     thumbs: {
         type: [String],

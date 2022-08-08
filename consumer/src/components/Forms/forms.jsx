@@ -10,13 +10,13 @@ export default function forms({currentId, changeId}) {
   const dispatch = useDispatch();
   const list = useSelector((state) => currentId !== 0 ? state.lists.find((p) => p._id === currentId) : null);
   const user = JSON.parse(localStorage.getItem("profile"));
-
   useEffect(()=>{
     if(list) setListData(list);
   },[list])
 
   const handleSubmit = (event) =>{
     event.preventDefault();
+    console.log(user);
     if(currentId !== 0){
       dispatch(updateList(currentId, {...listData, name: user?.result?.name}));
     }
@@ -31,7 +31,7 @@ export default function forms({currentId, changeId}) {
     setListData({title: '', content: '', tags: ''});
   }
   
-  if(user?.result?.name){
+  if(!user?.result?.name){
     return(
       <Paper className = "paper">
         <h4>Please Sign in before creating a List!</h4>

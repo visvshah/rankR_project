@@ -11,7 +11,7 @@ export const getLists = async (request, response) => {
 }
 export const createList = async (request, response) => {
     const list = request.body;
-    const newList = new listContent({...list, creator: request.userId, timeStamp: newData().toISOString()});
+    const newList = new listContent({...list, creator: request.userId, timeStamp: new Date().toISOString()});
     try {
         await newList.save();
         response.status(201).json(newList);
@@ -46,7 +46,7 @@ export const likeList = async (request, response) => {
         list.thumbs.push(request.userId);
     }
     else{
-        list.thumbs = post.likes.filter((id)=> id !== String(request.userId));
+        list.thumbs = list.thumbs.filter((id)=> id !== String(request.userId));
     }
     const newList = await listContent.findByIdAndUpdate(id, list, {new:true});
     response.json(newList);

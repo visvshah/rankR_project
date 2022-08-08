@@ -13,7 +13,7 @@ export default function App() {
           <Navbar/>
           <Switch>
             <Route path = "/" exact component = {Home}/>
-            <Route path = "/login" exact component = {Auth}/>
+            <Route path = "/auth" exact component = {Auth}/>
           </Switch>
         </Container>
       </BrowserRouter>

@@ -1,9 +1,13 @@
 .navBar{
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     .rankR{
+        flex: 3;
         display: flex;
         flex-direction: row;
         img{
@@ -17,10 +21,17 @@
         
     }
     .toolBar{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
         .profile{
-            .avatar{
-
-            }
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: row;
             .userName{
 
             }
@@ -29,4 +40,5 @@
             }
         }
     }
+    
 }

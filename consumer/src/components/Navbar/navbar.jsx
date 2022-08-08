@@ -1,31 +1,48 @@
-import React from "react";
-import {AppBar, Button, Toolbar} from '@material-ui/core';
-import {Link} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {AppBar, Button, Toolbar, Avatar} from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
+import {Link, useHistory, useLocation} from "react-router-dom";
 import RankRLogo from "../../images/RankRLogo.png";
 import "./navbar.scss";
 
 export default function Navbar() {
-
-    const user = null;
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const history = useHistory();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+    const logOut = () => {
+        dispatch({ type: "LOGOUT" });
+        history.push("/auth");
+        setUser(null);
+    }
+    useEffect(() => {
+        const token = user?.token;
+        if (token) {
+            const decodedToken = decode(token);
+        if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
+        setUser(JSON.parse(localStorage.getItem('profile')));
+        }, [location]);
     return (
-        <AppBar className ="navBar" position="static" color="inherit">
-            <div className="rankR">
+        <div className ="navBar" position="static" color="inherit">
+            <div className = "rankR">
                 <img src = {RankRLogo} alt = "RankR Logo"/>
                 <h1 className="heading">Your Lists</h1>
             </div>
-            <Toolbar className = "toolBar">
+            <div className = "toolBar">
                 {user?(
                     <div className="profile">
-                        <div className = "avatar">{user.result.name.charAr(0)}</div>
-                        <h4 className = "userName">{user.result.name}</h4>
-                        <Button className = "logout" variant = "contained" color = "secondary">Logout</Button>
+                        <Avatar className = "avatar">{user?.result.name.charAt(0)}</Avatar>
+                        <h4 className = "userName">{user?.result.name}</h4>
+                        <Button className = "logout" onClick= {logOut} variant = "contained" color = "secondary">Logout</Button>
                     </div>
                 ):(
-                    <Button component = {Link} to="/login" variant = "contained" color="primary">Sign in</Button>
+                    <Button component = {Link} to="/auth" variant = "contained" color="primary">Sign in</Button>
                 )
 
                 }
-            </Toolbar>
-        </AppBar>
+            </div>
+        </div>
     )
 }
