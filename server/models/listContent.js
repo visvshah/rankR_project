@@ -11,6 +11,10 @@ const postSchema = mongoose.Schema({
         type: [String],
         default: [],
     },
+    thumbsDown: {
+        type: [String],
+        default: [],
+    },
     timeStamp: {
         type: Date,
         default: new Date(),

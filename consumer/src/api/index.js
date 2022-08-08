@@ -14,6 +14,7 @@ export const createList = (newList) => API.post("/lists", newList);
 export const deleteList = (id) => API.delete(`/lists/${id}`);
 export const updateList = (id, newList) => API.patch(`/lists/${id}`, newList);
 export const likeList = (id) => API.patch(`/lists/${id}/thumbs`);
+export const dislikeList = (id) => API.patch(`/lists/${id}/thumbsDown`);
 
 export const signin = (userData) => API.post("/user/signin", userData);
 export const signup = (userData) => API.post("/user/signup", userData);

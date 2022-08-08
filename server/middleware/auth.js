@@ -12,7 +12,6 @@ const auth = async(request, response, next) => {
             decodedData = jwt.decode(token);
             request.userId = decodedData?.sub;
         }   
-        console.log("3.) middleware/auth.js")
         next();
     } catch (error) {
         console.log(error);

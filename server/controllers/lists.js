@@ -52,3 +52,20 @@ export const likeList = async (request, response) => {
     response.json(newList);
 };
 
+export const dislikeList = async (request, response) => {
+    const {id}= request.params;
+    if(!request.userId) return response.json({message: "Log in first!"});
+    console.log("reached controller");
+    if (!mongoose.Types.ObjectId.isValid(id)) return response.status(404).send(`No list with id: ${id}`);
+    const list = await listContent.findById(id);
+
+    const dislike = list.thumbsDown.findIndex((id) => id === String(request.userId));
+    if(dislike === -1){
+        list.thumbsDown.push(request.userId);
+    }
+    else{
+        list.thumbsDown = list.thumbsDown.filter((id)=> id !== String(request.userId));
+    }
+    const newList = await listContent.findByIdAndUpdate(id, list, {new:true});
+    response.json(newList);
+};
