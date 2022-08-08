@@ -21,7 +21,6 @@ export default function home() {
     }
     const handleSearchBar = (event) =>{
         changeSearch(event.target.value);
-        search.toLowerCase();
     }
     return (
         <Grow in>
@@ -49,7 +48,7 @@ export default function home() {
                             <Grid className = "searchBarHolder" item xs={12} sm={4}>
                                 <TextField className = "searchBar"
                                     id="filled-search"
-                                    label="Search field"
+                                    label="Search by name or title"
                                     type="search"
                                     onChange={handleSearchBar}
                                 />
