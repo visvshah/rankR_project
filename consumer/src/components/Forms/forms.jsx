@@ -5,7 +5,7 @@ import {createList, updateList} from '../../actions/lists.js';
 import './forms.scss';
 
 
-export default function forms({currentId, changeId}) {
+export default function forms({currentId, changeId, openForm}) {
   const [listData, setListData] = useState({title: '', content: '', tags: ''});
   const dispatch = useDispatch();
   const list = useSelector((state) => currentId !== 0 ? state.lists.find((p) => p._id === currentId) : null);
@@ -17,6 +17,7 @@ export default function forms({currentId, changeId}) {
   const handleSubmit = (event) =>{
     event.preventDefault();
     console.log(user);
+    openForm();
     if(currentId !== 0){
       dispatch(updateList(currentId, {...listData, name: user?.result?.name}));
     }

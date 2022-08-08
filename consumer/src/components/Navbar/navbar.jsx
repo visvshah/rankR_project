@@ -3,7 +3,6 @@ import {AppBar, Button, Toolbar, Avatar} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 import {Link, useHistory, useLocation} from "react-router-dom";
-import RankRLogo from "../../images/RankRLogo.png";
 import "./navbar.scss";
 
 export default function Navbar() {
@@ -20,15 +19,14 @@ export default function Navbar() {
         const token = user?.token;
         if (token) {
             const decodedToken = decode(token);
-        if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        if (decodedToken.exp * 1000 < new Date().getTime()) logOut();
         }
         setUser(JSON.parse(localStorage.getItem('profile')));
         }, [location]);
     return (
         <div className ="navBar" position="static" color="inherit">
             <div className = "rankR">
-                <img src = {RankRLogo} alt = "RankR Logo"/>
-                <h1 className="heading">Your Lists</h1>
+                <h1 className="heading">RankR: Share your favorites</h1>
             </div>
             <div className = "toolBar">
                 {user?(

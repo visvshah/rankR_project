@@ -4,23 +4,27 @@ import {Card, CardActions, CardContent, Button, Typography, ListSubheader} from 
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import DeleteIcon from '@material-ui/icons//Delete';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import EditIcon from '@material-ui/icons/Edit';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { deleteList, likeList, dislikeList} from '../../../actions/lists.js';
 import "./list.scss"
 
-export default function list({list, changeId}){
+export default function list({list, changeId, openForm}){
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
   const alreadyLiked = list.thumbs.find((thumb) => thumb === user?.result._id);
   const alreadyDisliked = list.thumbsDown.find((thumb) => thumb === user?.result._id);
   console.log(alreadyDisliked);
   const isCreator = user?.result._id === list.creator;
+  const editList = () =>{
+    openForm();
+    changeId(list._id);
+  }
   return (
     <Card className = 'card'>
       {isCreator ? (
-        <Button className = 'editButton' size ="small" onClick={() => changeId(list._id)}><MoreHorizIcon fontSize='medium'></MoreHorizIcon></Button>
+        <Button className = 'editButton' size ="small" onClick={editList}><EditIcon fontSize='medium'/>EDIT</Button>
       ) : null
       }
       <div className='listHeading'>
