@@ -5,13 +5,28 @@
         .openForm{
             background-color: white;
             margin-top: 30px;
-            border-radius: 20px;
             height: 80px;
+            align-items: center;
+            border-style: solid;
+            border-radius: 5px;
             .button{
                 width: 100%;
                 align-items: center;
                 justify-content: center;
                 color: black;
+            }
+        }
+        .searchBarHolder{
+            border-radius: 5px;
+            border-style: solid;
+            display: flex;
+            margin-top: 30px;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            .searchBar{
+                width:90%;
+                background-color: white;
             }
         }
     }

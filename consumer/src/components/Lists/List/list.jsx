@@ -15,7 +15,6 @@ export default function list({list, changeId, openForm}){
   const user = JSON.parse(localStorage.getItem("profile"));
   const alreadyLiked = list.thumbs.find((thumb) => thumb === user?.result._id);
   const alreadyDisliked = list.thumbsDown.find((thumb) => thumb === user?.result._id);
-  console.log(alreadyDisliked);
   const isCreator = user?.result._id === list.creator;
   const editList = () =>{
     openForm();

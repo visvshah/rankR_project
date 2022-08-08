@@ -59,7 +59,6 @@ export const likeList = async (request, response) => {
 export const dislikeList = async (request, response) => {
     const {id}= request.params;
     if(!request.userId) return response.json({message: "Log in first!"});
-    console.log("reached controller");
     if (!mongoose.Types.ObjectId.isValid(id)) return response.status(404).send(`No list with id: ${id}`);
     const list = await listContent.findById(id);
     const like = list.thumbs.findIndex((id) => id === String(request.userId));
