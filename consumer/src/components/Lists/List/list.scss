@@ -64,13 +64,15 @@
         display: flex;
         justify-content: space-between;
         .thumbsUp{
+            
             &.active{
-                color: red;
+                color: blue;
             }
         }
         .thumbsDown{
+            
             &.active{
-                color: red;
+                color: blue;
             }
         }
     }

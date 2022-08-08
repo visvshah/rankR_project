@@ -43,16 +43,16 @@ export default function list({list, changeId}){
 
       <CardActions className="listFooting">
         <div className = 'thumbs'>
-          <Button size = "small" color="primary" disabled = {!user?.result} onClick={() => dispatch(likeList(list._id))}>
+          <Button size = "small" disabled = {!user?.result} onClick={() => dispatch(likeList(list._id))}>
             <ThumbUpAltIcon className = {`thumbsUp ${alreadyLiked ? "active" : ""}`}/>
           </Button>
-          <Button size = "small" color="primary" disabled = {!user?.result} onClick={() => dispatch(dislikeList(list._id))}>
+          <Button size = "small" disabled = {!user?.result} onClick={() => dispatch(dislikeList(list._id))}>
             <ThumbDownAltIcon className={`thumbsDown ${alreadyDisliked ? "active" : ""}`}/>
           </Button>
           {list.thumbs.length - list.thumbsDown.length}
         </div>
         {isCreator ? (
-          <Button size = "small" color="primary" disabled = {!user?.result} onClick={() => dispatch(deleteList(list._id))}>
+          <Button size = "small" disabled = {!user?.result} onClick={() => dispatch(deleteList(list._id))}>
             <DeleteIcon/>
           </Button>
         ) : null

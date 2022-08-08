@@ -42,8 +42,12 @@ export const likeList = async (request, response) => {
     const list = await listContent.findById(id);
 
     const like = list.thumbs.findIndex((id) => id === String(request.userId));
+    const dislike = list.thumbsDown.findIndex((id) => id === String(request.userId));
     if(like === -1){
         list.thumbs.push(request.userId);
+        if(dislike !== -1){
+            list.thumbsDown = list.thumbsDown.filter((id)=> id !== String(request.userId));
+        }
     }
     else{
         list.thumbs = list.thumbs.filter((id)=> id !== String(request.userId));
@@ -58,10 +62,13 @@ export const dislikeList = async (request, response) => {
     console.log("reached controller");
     if (!mongoose.Types.ObjectId.isValid(id)) return response.status(404).send(`No list with id: ${id}`);
     const list = await listContent.findById(id);
-
+    const like = list.thumbs.findIndex((id) => id === String(request.userId));
     const dislike = list.thumbsDown.findIndex((id) => id === String(request.userId));
     if(dislike === -1){
         list.thumbsDown.push(request.userId);
+        if(like !== -1){
+            list.thumbs = list.thumbs.filter((id)=> id !== String(request.userId));
+        }
     }
     else{
         list.thumbsDown = list.thumbsDown.filter((id)=> id !== String(request.userId));
