@@ -15,7 +15,6 @@ app.use(cors());
 app.use('/lists', listRoutes);
 app.use('/user', userRoutes);
 
-//const CONNECTION_URL = 'mongodb+srv://VisvShah:V123321@cluster0.ibin7vz.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 4000;
 
 mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
