@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react'
-import {Container, Grow, Grid, Button, TextField} from '@material-ui/core'
+import React, {useState, useEffect} from 'react';
+import {Container, Grow, Grid, Button, TextField} from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import HomeIcon from '@material-ui/icons/Home';
-import Form from "../Forms/forms.jsx"
-import Lists from "../Lists/lists.jsx"
-import { useDispatch } from 'react-redux'
-import {getLists} from '../../actions/lists.js'
-import "./home.scss"
+import Form from "../Forms/forms.jsx";
+import Lists from "../Lists/lists.jsx";
+import { useDispatch } from 'react-redux';
+import {getLists} from '../../actions/lists.js';
+import "./home.scss";
 
 export default function home() {
     const [currentId, changeId] = useState(0);
@@ -26,7 +26,7 @@ export default function home() {
         <Grow in>
             <Container className ="content">
                 <Grid className = "contentGrid" container spacing={3}>
-                    <Grid className = "openForm" item xs={12} sm={8}>
+                    <Grid className = "openForm" item xs={6} sm={4}>
                         <Button className = "button" onClick = {openForm}>
                         {
                             !showForm ? (
@@ -45,7 +45,7 @@ export default function home() {
                     </Grid>
                     {
                         !showForm && (
-                            <Grid className = "searchBarHolder" item xs={12} sm={4}>
+                            <Grid className = "searchBarHolder" item xs={6} sm={4}>
                                 <TextField className = "searchBar"
                                     id="filled-search"
                                     label="Search by name or title"

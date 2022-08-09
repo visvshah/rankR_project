@@ -1,8 +1,8 @@
-import React from 'react'
-import {Grid, CircularProgress} from "@material-ui/core"
-import {useSelector} from 'react-redux'
+import React from 'react';
+import {Grid, CircularProgress} from "@material-ui/core";
+import {useSelector} from 'react-redux';
 import List from './List/list.jsx';
-import "./lists.scss"
+import "./lists.scss";
 export default function Lists({changeId, openForm, search}){
   const lists = useSelector((state) => state.lists);
   const searchResults = lists.filter((list) => (list.title.toLowerCase().includes(search.toLowerCase())) || (list.name.toLowerCase().includes(search.toLowerCase()))).reverse();

@@ -1,6 +1,6 @@
 
-import Reacts from 'react'
-import {Card, CardActions, CardContent, Button, Typography, ListSubheader} from '@material-ui/core';
+import React from 'react';
+import {Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import DeleteIcon from '@material-ui/icons//Delete';
@@ -8,7 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { deleteList, likeList, dislikeList} from '../../../actions/lists.js';
-import "./list.scss"
+import "./list.scss";
 
 export default function list({list, changeId, openForm}){
   const dispatch = useDispatch();
@@ -39,11 +39,6 @@ export default function list({list, changeId, openForm}){
           <p className = "content">{`${num + 1}) ${item}`}</p>
         ))}
       </CardContent>
-      
-      <div className='details'>
-        <Typography variant = 'body2' color="textSecondary">{list.tags.map((tag) => `#${tag}`)}</Typography>
-      </div>
-
       <CardActions className="listFooting">
         <div className = 'thumbs'>
           <Button size = "small" disabled = {!user?.result} onClick={() => dispatch(likeList(list._id))}>
