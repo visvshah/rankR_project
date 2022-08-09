@@ -1,13 +1,13 @@
 
-import React from 'react';
-import {Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
-import DeleteIcon from '@material-ui/icons//Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import moment from 'moment';
-import { useDispatch } from 'react-redux';
-import { deleteList, likeList, dislikeList} from '../../../actions/lists.js';
+import React from "react";
+import {Card, CardActions, CardContent, Button} from "@material-ui/core";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
+import DeleteIcon from "@material-ui/icons//Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import moment from "moment";
+import { useDispatch } from "react-redux";
+import { deleteList, likeList, dislikeList} from "../../../actions/lists.js";
 import "./list.scss";
 
 export default function list({list, changeId, openForm}){
@@ -21,16 +21,16 @@ export default function list({list, changeId, openForm}){
     changeId(list._id);
   }
   return (
-    <Card className = 'card'>
+    <Card className = "card">
       {isCreator ? (
-        <Button className = 'editButton' size ="small" onClick={editList}><EditIcon fontSize='medium'/>EDIT</Button>
+        <Button className = "editButton" size ="small" onClick={editList}><EditIcon fontSize="medium"/></Button>
       ) : null
       }
-      <div className='listHeading'>
+      <div className="listHeading">
         <h1>{list.title}</h1>
-        <div className = 'holder'>
-          <h3 className = 'author'>{list.name}</h3>
-          <p className= 'date'>{moment(list.timeStamp).fromNow()}</p>
+        <div className = "holder">
+          <h3 className = "author">{list.name}</h3>
+          <p className= "date">{moment(list.timeStamp).fromNow()}</p>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export default function list({list, changeId, openForm}){
         ))}
       </CardContent>
       <CardActions className="listFooting">
-        <div className = 'thumbs'>
+        <div className = "thumbs">
           <Button size = "small" disabled = {!user?.result} onClick={() => dispatch(likeList(list._id))}>
             <ThumbUpAltIcon className = {`thumbsUp ${alreadyLiked ? "active" : ""}`}/>
           </Button>

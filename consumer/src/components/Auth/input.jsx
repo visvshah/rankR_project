@@ -1,11 +1,11 @@
-import React from 'react'
-import {IconButton, InputAdornment, Grid, TextField} from '@material-ui/core'
+import React from "react";
+import {IconButton, InputAdornment, Grid, TextField} from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 export default function input({name, label, autoFocus, type, handleChange, handleShowPassword, half}) {
   return (
-    <Grid xs = {12} md ={half ? 6: 12}>
+    <Grid item xs = {12} md ={half ? 6: 12}>
         <TextField 
             variant = "outlined"
             required

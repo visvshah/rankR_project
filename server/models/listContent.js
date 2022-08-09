@@ -20,6 +20,6 @@ const postSchema = mongoose.Schema({
     }
 })
 
-const listContent = mongoose.model('ListContent', postSchema);
+const listContent = mongoose.model("ListContent", postSchema);
 
 export default listContent;

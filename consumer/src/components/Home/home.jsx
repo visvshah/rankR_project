@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {Container, Grow, Grid, Button, TextField} from '@material-ui/core';
-import CreateIcon from '@material-ui/icons/Create';
-import HomeIcon from '@material-ui/icons/Home';
+import React, {useState, useEffect} from "react";
+import {Container, Grow, Grid, Button, TextField} from "@material-ui/core";
+import CreateIcon from "@material-ui/icons/Create";
+import HomeIcon from "@material-ui/icons/Home";
 import Form from "../Forms/forms.jsx";
 import Lists from "../Lists/lists.jsx";
-import { useDispatch } from 'react-redux';
-import {getLists} from '../../actions/lists.js';
+import { useDispatch } from "react-redux";
+import {getLists} from "../../actions/lists.js";
 import "./home.scss";
 
 export default function home() {
