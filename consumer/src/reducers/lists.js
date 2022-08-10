@@ -1,14 +1,14 @@
 export default (lists = [], action) => {
     switch(action.type){
-        case 'FETCH_ALL':
+        case "FETCH_ALL":
             return action.payload;
-        case 'CREATE':
+        case "CREATE":
             return [...lists, action.payload];
-        case 'DELETE':
+        case "DELETE":
             return lists.filter((list) => list._id !== action.payload);
-        case 'UPDATE':
+        case "UPDATE":
             return lists.map((list)=> (list._id === action.payload._id ? action.payload : list));
-        case 'LIKE':
+        case "LIKE":
             return lists.map((list)=> (list._id === action.payload._id ? action.payload : list));
         default:
             return lists;

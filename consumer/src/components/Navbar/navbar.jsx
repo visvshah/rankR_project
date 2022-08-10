@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
-import {AppBar, Button, Toolbar, Avatar} from '@material-ui/core';
-import { useDispatch } from 'react-redux';
-import decode from 'jwt-decode';
+import {Button, Avatar} from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import decode from "jwt-decode";
 import {Link, useHistory, useLocation} from "react-router-dom";
 import "./navbar.scss";
 
@@ -21,7 +21,7 @@ export default function Navbar() {
             const decodedToken = decode(token);
         if (decodedToken.exp * 1000 < new Date().getTime()) logOut();
         }
-        setUser(JSON.parse(localStorage.getItem('profile')));
+        setUser(JSON.parse(localStorage.getItem("profile")));
         }, [location]);
     return (
         <div className ="navBar" position="static" color="inherit">

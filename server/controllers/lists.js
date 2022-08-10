@@ -1,5 +1,5 @@
-import listContent from '../models/listContent.js';
-import mongoose from 'mongoose';
+import listContent from "../models/listContent.js";
+import mongoose from "mongoose";
 
 export const getLists = async (request, response) => {
     try {
