@@ -26,7 +26,7 @@ export default function home() {
         <Grow in>
             <Container className ="content">
                 <Grid className = "contentGrid" container spacing={3}>
-                    <Grid className = "openForm" item xs={6} sm={4}>
+                    <Grid className = "openForm" item xs={12} sm={8}>
                         <Button className = "button" onClick = {openForm}>
                         {
                             !showForm ? (
@@ -45,7 +45,7 @@ export default function home() {
                     </Grid>
                     {
                         !showForm && (
-                            <Grid className = "searchBarHolder" item xs={6} sm={4}>
+                            <Grid className = "searchBarHolder" item xs={12} sm={4}>
                                 <TextField className = "searchBar"
                                     id="filled-search"
                                     label="Search by name or title"
@@ -57,7 +57,7 @@ export default function home() {
                     }
                     {
                         !showForm && (
-                            <Grid className="Posts" item xs={12} sm={10}>
+                            <Grid className="Posts" item xs={12} sm={12}>
                                 <Lists changeId = {changeId} openForm = {openForm} search = {search}/>
                             </Grid>
                         )

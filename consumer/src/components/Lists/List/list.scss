@@ -12,7 +12,7 @@
         align-items: center;
         justify-content: center;
         align-items: center;
-        color: black;
+        color: white;
         position: absolute;
         top: 0px;
         right: 0px;
@@ -22,6 +22,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        color: #FF652F;
         .holder{
             width: 100%;
             align-items: center;
@@ -29,13 +30,14 @@
             display: flex;
             flex-direction: row;
             .author{
+                color: #FF652F;
                 display: flex;
                 font-size: 20px;
                 font-weight: 700;
             }
             .date{
                 display: flex;
-                color: gray;
+                color: lightgray;
                 font-size: 14px;  
             }
         }
@@ -49,6 +51,7 @@
         display: flex;
     }
     .content{
+        color: white;
         padding: 0 10px;
         font-size: 13px;
     }
@@ -56,17 +59,24 @@
         padding: 0 16px 8px 16px;
         display: flex;
         justify-content: space-between;
-        .thumbsUp{
-            
-            &.active{
-                color: blue;
+        .thumbs{
+            color:white;
+            .thumbsUp{
+                color:white;
+                &.active{
+                    color: #FF652F;
+                }
+            }
+            .thumbsDown{
+                color:white;
+                &.active{
+                    color: #FF652F;
+                }
             }
         }
-        .thumbsDown{
-            
-            &.active{
-                color: blue;
-            }
+        .delete{
+            color: white;
         }
+        
     }
 }

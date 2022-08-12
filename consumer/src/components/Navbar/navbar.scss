@@ -28,9 +28,16 @@
             justify-content: space-around;
             align-items: center;
             flex-direction: row;
+            .avatar{
+                background-color: black;
+            }
             .logout{
                 margin-right: 10px;
+                background-color: black;
             }
+        }
+        .signin{
+            background-color: black;
         }
     }
     

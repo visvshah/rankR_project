@@ -36,7 +36,7 @@ export default function Navbar() {
                         <Button className = "logout" onClick= {logOut} variant = "contained" color = "secondary">Logout</Button>
                     </div>
                 ):(
-                    <Button component = {Link} to="/auth" variant = "contained" color="primary">Sign in</Button>
+                    <Button className = "signin "component = {Link} to="/auth" variant = "contained" color="primary">Sign in</Button>
                 )
 
                 }

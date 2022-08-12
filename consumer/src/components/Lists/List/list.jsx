@@ -21,7 +21,7 @@ export default function list({list, changeId, openForm}){
     changeId(list._id);
   }
   return (
-    <Card className = "card">
+    <Card className = "card" style={{backgroundColor: "black"}}>
       {isCreator ? (
         <Button className = "editButton" size ="small" onClick={editList}><EditIcon fontSize="medium"/></Button>
       ) : null
@@ -50,7 +50,7 @@ export default function list({list, changeId, openForm}){
           {list.thumbs.length - list.thumbsDown.length}
         </div>
         {isCreator ? (
-          <Button size = "small" disabled = {!user?.result} onClick={() => dispatch(deleteList(list._id))}>
+          <Button className = "delete" size = "small" disabled = {!user?.result} onClick={() => dispatch(deleteList(list._id))}>
             <DeleteIcon/>
           </Button>
         ) : null
